@@ -1,0 +1,52 @@
+{
+  "expo": {
+    "name": "صمّم",
+    "slug": "samim",
+    "scheme": "samim",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#000000",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.samim.designer",
+      "infoPlist": {
+        "CFBundleDisplayName": "صمّم"
+      }
+    },
+    "android": {
+      "package": "com.samim.designer",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#000000"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-logo.png",
+          "backgroundColor": "#000000",
+          "imageWidth": 240
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "يحتاج التطبيق إلى الوصول إلى صورك لتحريرها."
+        }
+      ],
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "يحتاج التطبيق إلى الوصول إلى صورك.",
+          "savePhotosPermission": "يحتاج التطبيق إلى حفظ الصور المعدلة في معرضك.",
+          "isAccessMediaLocationEnabled": false
+        }
+      ]
+    ]
+  }
+}

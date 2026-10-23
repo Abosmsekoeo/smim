@@ -1,0 +1,47 @@
+{
+  "name": "samim",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.ts",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "test": "tsx --test \"tests/*.test.ts\"",
+    "typecheck": "tsc --noEmit",
+    "check:fonts": "node scripts/check-fonts.js",
+    "fix-deps": "expo install --fix",
+    "prebuild:android": "expo prebuild --platform android"
+  },
+  "dependencies": {
+    "@expo-google-fonts/almarai": "*",
+    "@expo-google-fonts/amiri": "*",
+    "@expo-google-fonts/aref-ruqaa": "*",
+    "@expo-google-fonts/cairo": "*",
+    "@expo-google-fonts/lalezar": "*",
+    "@expo-google-fonts/playfair-display": "*",
+    "@expo-google-fonts/poppins": "*",
+    "@expo-google-fonts/reem-kufi": "*",
+    "@expo-google-fonts/tajawal": "*",
+    "@expo/vector-icons": "^15.0.2",
+    "@shopify/react-native-skia": "^2.2.0",
+    "expo": "~54.0.0",
+    "expo-file-system": "~19.0.0",
+    "expo-image-manipulator": "~14.0.0",
+    "expo-image-picker": "~17.0.0",
+    "expo-media-library": "~18.2.0",
+    "expo-sharing": "~14.0.0",
+    "expo-splash-screen": "~31.0.0",
+    "expo-status-bar": "~3.0.0",
+    "expo-system-ui": "~6.0.0",
+    "react": "19.1.0",
+    "react-native": "~0.81.0",
+    "react-native-safe-area-context": "~5.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "~19.1.0",
+    "tsx": "^4.19.0",
+    "typescript": "~5.9.2"
+  }
+}
