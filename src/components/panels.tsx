@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Pressable, ScrollView, View } from 'react-native';
-import { Canvas, Group, Image as SkiaImage, ImageShader, Path, Rect, Shader } from '@shopify/react-native-skia';
+import { Canvas, FilterMode, Group, Image as SkiaImage, ImageShader, MipmapMode, Path, Rect, Shader } from '@shopify/react-native-skia';
 import type { SkImage, SkRuntimeEffect } from '@shopify/react-native-skia';
 import type { Editor } from '../useEditor';
 import type { EditorState, ShapeLayer, TextLayer } from '../lib/types';
@@ -98,6 +98,8 @@ export function AdjustPanel({ ed }: PanelProps) {
 
 // ───────────── الفلاتر ─────────────
 const CELL = 76;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const SHADER_SAMPLING: Record<string, any> = { sampling: { filter: FilterMode.Linear, mipmap: MipmapMode.Linear } };
 
 function FilterStrip({ image, effect, selected, onSelect }: { image: SkImage | null; effect: SkRuntimeEffect | null; selected: string; onSelect: (id: string) => void }) {
   const total = FILTERS.length * CELL;
@@ -124,7 +126,7 @@ function FilterStrip({ image, effect, selected, onSelect }: { image: SkImage | n
                       ) : (
                         <Rect x={0} y={0} width={image.width()} height={image.height()}>
                           <Shader source={effect} uniforms={shaderUniforms(params, 1 / s)}>
-                            <ImageShader image={image} fit="fill" rect={{ x: 0, y: 0, width: image.width(), height: image.height() }} tx="clamp" ty="clamp" fm="linear" mm="linear" />
+                            <ImageShader image={image} fit="fill" rect={{ x: 0, y: 0, width: image.width(), height: image.height() }} tx="clamp" ty="clamp" {...SHADER_SAMPLING} />
                           </Shader>
                         </Rect>
                       )}

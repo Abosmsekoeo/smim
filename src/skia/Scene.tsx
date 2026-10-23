@@ -61,6 +61,9 @@ export function strokePath(points: number[]): SkPath {
 }
 
 // ───── الصورة مع المعالجة ─────
+// تنعيم عند التصغير. تُمرَّر بشكل مرن حتى لا يفشل التجميع إن اختلفت أسماء الخصائص بين إصدارات Skia.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const SHADER_SAMPLING: Record<string, any> = { sampling: { filter: FilterMode.Linear, mipmap: MipmapMode.Linear } };
 export function PhotoRect(props: {
   image: SkImage;
   width: number;
@@ -84,8 +87,7 @@ export function PhotoRect(props: {
             rect={{ x: 0, y: 0, width, height }}
             tx="clamp"
             ty="clamp"
-            fm="linear"
-            mm="linear"
+            {...SHADER_SAMPLING}
           />
         </Shader>
       </Rect>

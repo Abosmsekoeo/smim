@@ -39,12 +39,12 @@ export interface ExportInput {
 }
 
 /** يرسم المشهد بالدقة الكاملة خارج الشاشة ويكتبه إلى ملف مؤقت. */
-export function renderToFile(input: ExportInput): { uri: string; width: number; height: number; mime: string } {
+export async function renderToFile(input: ExportInput): Promise<{ uri: string; width: number; height: number; mime: string }> {
   const { state, image, fonts, photoEffect, grainEffect, format, quality, size } = input;
   if (state.source.kind === 'image' && !image) throw new Error('الصورة لم تُحمَّل بعد');
   const view = viewOf(state);
   const { w, h, scale } = exportDimensions(state, size);
-  const rendered = drawAsImage(
+  const rendered = await drawAsImage(
     <Group transform={[{ scale }]}>
       <Scene
         state={state}

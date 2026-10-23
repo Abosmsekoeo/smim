@@ -130,7 +130,7 @@ export function ExportModal(props: {
     // نمهل الواجهة لحظة لتعرض مؤشر الانتظار قبل الرسم الثقيل
     setTimeout(async () => {
       try {
-        const out = renderToFile({ state, image, fonts, photoEffect, grainEffect, format, quality, size });
+        const out = await renderToFile({ state, image, fonts, photoEffect, grainEffect, format, quality, size });
         if (action === 'save') {
           await saveToGallery(out.uri);
           setMessage({ text: `تم الحفظ في المعرض (${out.width}×${out.height})` });
